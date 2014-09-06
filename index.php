@@ -16,8 +16,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a class="navbar-brand" href="/">Devernote</a></li>
-                    <li><a href="/templates/browser.html">Projects</a></li>
-                    <li><a href="/templates/work.html">Text Editor</a></li>
+                    <li><a href="templates/browser.html">Projects</a></li>
+                    <li><a href="templates/work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="login.php">Login</a></li>
