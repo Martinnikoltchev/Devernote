@@ -6,11 +6,15 @@
         <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../static/js/codemirror.js"></script>
         <script type="text/javascript" src="../static/js/python.js"></script>
+        <script type="text/javascript" src="../static/js/jquery-ui.min.js"></script>
 
         <!-- CSS Files -->
         <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.min.css" />
         <link rel="stylesheet" type="text/css" href="../static/css/codemirror.css" />
+        <link rel="stylesheet" type="text/css" href="../static/css/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/jquery-ui.theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/jquery-ui.structure.min.css">
 
         <style>
         #editorDiv{
@@ -18,20 +22,47 @@
             border-top:1px solid #333333;
             border-bottom:1px solid #333333;
         }
+        a{
+            color:black;
+        }
+        a:hover{
+            text-decoration: none;
+        }
         </style>
     </head>
     <body>
+        <div id="popupbox" title="Upload File(s)"></div>
         <script type="text/javascript">
+            $(document).ready(function(){
+                $('.popup').click(function(e){
+                    e.preventDefault();
+                    $("#popupbox").load($(this).attr("href"), function(){
+                         //sets popup box to be at the top and have a certain width
+                        $("#popupbox").dialog({
+                            autoOpen: false,
+                            width:450,
+                        });
+                        $("#popupbox").dialog("open");   
+                        $(".closedialog").click(function(e){
+                            e.preventDefault();
+                            $("#popupbox").dialog("close");
+                            return false;
+                        });    
+                    });
+                    return false;
+                });
+            });
+
         </script>
         <nav class = "navbar navbar-default" role="navigation">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a class="navbar-brand" href="#">Devernote</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Text Editor</a></li>
+                    <li><a class="navbar-brand" href="/">Devernote</a></li>
+                    <li><a href="/templates/browser.html">Projects</a></li>
+                    <li><a href="/templates/work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Login</a></li>
+                    <li><a href="/templates/login.html">Login</a></li>
                 </ul>
             </div>
         </nav>
@@ -45,5 +76,6 @@
             });
             </script>
         </div>
+        <button class = "btn btn-default"><a href="../templates/popup.html" class="popup">Upload File</a></button>
     </body>
 </html>
