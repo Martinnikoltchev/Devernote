@@ -18,7 +18,7 @@
 
         <style>
         #editorDiv{
-            margin: 50px 10px 50px 10px;
+            margin: 10px 10px 50px 10px;
             border-top:1px solid #AAA;
             border-bottom:1px solid #AAA;
         }
@@ -28,12 +28,28 @@
         a:hover{
             text-decoration: none;
         }
+        h1, button{
+            margin-left:10px;
+        }
+        #output_results{
+            margin: 0px 0px 50px 10px;
+            padding-top:10px;
+            padding-bottom:10px;
+            width:98.5%;
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+            border-color: #C0C0C0;
+            margin-top:5px;
+        }
         </style>
     </head>
     <body>
         <div id="popupbox" title="Upload File(s)"></div>
         <script type="text/javascript">
             $(document).ready(function(){
+
+                $('#output_div').hide();
+
                 $('.popup').click(function(e){
                     e.preventDefault();
                     $("#popupbox").load($(this).attr("href"), function(){
@@ -61,6 +77,7 @@
                         data: {"content": text_data},
                         dataType:"json",
                         success:function(data){
+                            $('#output_div').show();
                             console.log('Content posted.');
                             console.log(data);
                         },
@@ -75,26 +92,34 @@
         <nav class = "navbar navbar-default" role="navigation">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a class="navbar-brand" href="/">Devernote</a></li>
-                    <li><a href="/templates/browser.html">Projects</a></li>
-                    <li><a href="/templates/work.html">Text Editor</a></li>
+                    <li><a class="navbar-brand" href="../index.php">Devernote</a></li>
+                    <li><a href="browser.html">Projects</a></li>
+                    <li><a href="work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/templates/login.html">Login</a></li>
+                    <li><a href="login.html">Login</a></li>
                 </ul>
             </div>
         </nav>
 
-        <h1>Editor</h1>
-        <div id="editorDiv">
-            <textarea id="textEditor"># your code goes here</textarea>
-            <script type="text/javascript">
-            var editor = CodeMirror.fromTextArea(document.getElementById("textEditor"),{
-                mode: "python"
-            });
-            </script>
+        <div id="content_container">
+            <h1>Text Editor</h1>
+            <div id="editorDiv">
+                <textarea id="textEditor"># your code goes here</textarea>
+                <script type="text/javascript">
+                var editor = CodeMirror.fromTextArea(document.getElementById("textEditor"),{
+                    mode: "python"
+                });
+                </script>
+            </div>
+            <div id="output_div">
+                <h1>Output</h1>
+                <p id="output_results">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <button class = "btn btn-default" id="save_content"><a href="../templates/save.html" class = "popup">Save</a></button>
+            <button class = "btn btn-default"><a href="../templates/upload_form.html" class="popup">Upload File</a></button>
         </div>
-        <button class = "btn btn-default" id="save_content">Save</button>
-        <button class = "btn btn-default"><a href="../templates/popup.html" class="popup">Upload File</a></button>
     </body>
 </html>
