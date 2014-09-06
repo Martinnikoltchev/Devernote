@@ -51,6 +51,24 @@
                     });
                     return false;
                 });
+
+                $("#save_content").click(function(e){
+                    e.preventDefault();
+                    var text_data = editor.getValue();
+                    $.ajax({
+                        type:"POST",
+                        url:"models/pycomp.php",
+                        data: {"content": text_data},
+                        dataType:"json",
+                        success:function(data){
+                            console.log('Content posted.');
+                            console.log(data);
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                    });
+                });
             });
 
         </script>
@@ -76,6 +94,7 @@
             });
             </script>
         </div>
+        <button class = "btn btn-default" id="save_content">Save</button>
         <button class = "btn btn-default"><a href="../templates/popup.html" class="popup">Upload File</a></button>
     </body>
 </html>
