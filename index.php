@@ -24,10 +24,11 @@
                 </ul>
             </div>
         </nav>
-
-        <h1>Devernote</h1>
-        <p>
-            cool thing these guys did this one time.
-        </p>
+        <div id="content_container">
+            <h1>Devernote</h1>
+            <p>
+                cool thing these guys did this one time.
+            </p>
+        </div>
     </body>
 </html>
