@@ -10,6 +10,8 @@
     // lib simply contains the contents of /php/lib from the Evernote API SDK
     define("EVERNOTE_LIBS", dirname(__FILE__) . DIRECTORY_SEPARATOR . "lib");
     ini_set("include_path", ini_get("include_path") . PATH_SEPARATOR . EVERNOTE_LIBS);
+    $test = get_loaded_extensions();
+    $test_length = sizeof($test);
 
     require_once 'Evernote/Client.php';
     require_once 'packages/Types/Types_types.php';

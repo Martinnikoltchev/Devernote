@@ -72,7 +72,7 @@
 <?php } elseif ($action != 'callback') { ?>
 
         <p>
-            <a href="sampleApp.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
+            <a href="sample.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
         </p>
 
 <?php } else { ?>
@@ -97,7 +97,7 @@
         <hr/>
 
         <p>
-            <a href="sampleApp.php?action=reset">Click here</a> to start over.
+            <a href="sample.php?action=reset">Click here</a> to start over.
         </p>
 
     </body>
