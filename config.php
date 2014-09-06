@@ -10,8 +10,8 @@
     // Client credentials. Fill in these values with the consumer key and consumer secret 
     // that you obtained from Evernote. If you do not have an Evernote API key, you may
     // request one from http://dev.evernote.com/documentation/cloud/
-    define('OAUTH_CONSUMER_KEY', '');
-    define('OAUTH_CONSUMER_SECRET', '');
+    define('OAUTH_CONSUMER_KEY', 'tyuguy');
+    define('OAUTH_CONSUMER_SECRET', '2976dcb9e37373c9');
 
     // Replace this value with FALSE to use Evernote's production server
     define('SANDBOX', TRUE);
