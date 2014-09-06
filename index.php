@@ -20,14 +20,14 @@
                     <li><a href="/templates/work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/templates/login.html">Login</a></li>
+                    <li><a href="login.php">Login</a></li>
                 </ul>
             </div>
         </nav>
 
         <h1>Devernote</h1>
         <p>
-            cool thing these guys did this one time. test
+            cool thing these guys did this one time.
         </p>
     </body>
 </html>
