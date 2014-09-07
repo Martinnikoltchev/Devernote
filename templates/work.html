@@ -18,7 +18,7 @@
 
         <style>
         #editorDiv{
-            margin: 10px 10px 50px 10px;
+            margin: 10px 10px 10px 10px;
             border-top:1px solid #AAA;
             border-bottom:1px solid #AAA;
         }
@@ -76,7 +76,7 @@
                     for(var i = 0; i < text_data_lines.length; i++){
                         text_data_lines[i] = "\t" + text_data_lines[i];
                     }
-                    var text_data = "try:\n" + text_data_lines.join("\n") + "\nexcept:\nimport traceback\ntraceback.print_exc()";
+                    var text_data = "try:\n" + text_data_lines.join("\n") + "\nexcept:\n\timport traceback\n\ttraceback.print_exc()";
                     console.log(text_data); //debug
                     $.ajax({
                         type:"POST",
