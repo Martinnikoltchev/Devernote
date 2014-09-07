@@ -29,6 +29,34 @@
                 font-size:50px;
             }
         </style>
+        <?php
+            // Include our configuration settings
+            require_once 'config.php';
+
+            // Include our OAuth functions
+            require_once 'functions.php';
+            if (session_id() == ""){
+                session_start();
+            }
+
+            // Status variables
+            $lastError = null;
+            $currentStatus = null;
+
+            // Request dispatching. If a function fails, $lastError will be updated.
+            if (isset($_GET['action'])) {
+                $action = $_GET['action'];
+                if ($action == 'authorize') {
+                    if (getTemporaryCredentials()) {
+                        // We obtained temporary credentials, now redirect the user to evernote.com to authorize access
+                        header('Location: ' . getAuthorizationUrl());
+                    }
+                } elseif ($action == 'reset') {
+                    resetSession();
+                }
+            }
+
+        ?>
     </head>
     <body>
         <script type="text/javascript">
@@ -41,7 +69,7 @@
                     <li><a href="templates/work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.php">Login</a></li>
+                    <li><a href="index.php?action=authorize">Login</a></li>
                 </ul>
             </div>
         </nav>

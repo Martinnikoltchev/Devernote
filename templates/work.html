@@ -68,6 +68,25 @@
                     return false;
                 });
 
+                $("#run_code").click(function(e){
+                    e.preventDefault();
+                    e.preventDefault();
+                    var text_data = editor.getValue();
+                    $.ajax({
+                        type:"POST",
+                        url:"../models/pycomp.php",
+                        data: {"content": text_data},
+                        dataType:"json",
+                        success:function(data){
+                            $('#output_div').show();
+                            console.log('Content posted.');
+                            console.log(data);
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                    });
+                })
                 $("#save_form").submit(function(e){
                     e.preventDefault();
                     var text_data = editor.getValue();
@@ -120,7 +139,8 @@
                 </p>
             </div>
             <button class = "btn btn-default" id="save_content"><a href="../templates/save.html" class = "popup" data-title = "Save Text" >Save</a></button>
-            <!-- <button class = "btn btn-default"><a href="../templates/upload_form.html" class="popup" data-title = "Upload File(s)">Upload File</a></button> -->
+            <button class = "btn btn-default" id="run_code">Run</button>
+            <button class = "btn btn-default"><a href="../templates/upload_form.html" class="popup">Upload File</a></button>
         </div>
     </body>
 </html>
