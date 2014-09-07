@@ -84,8 +84,8 @@
                         dataType:"json",
                         success:function(data){
                             console.log('Content posted.');
-                            console.log(data['content']);
-                            $('#output_results').append(data['content']+'\n');
+                            console.log(data.responseText);
+                            $('#output_results').append(data.responseText);
                             $('#output_div').show();
                         },
                         error:function(err){
