@@ -17,12 +17,14 @@
 
     // Include our OAuth functions
     require_once 'functions.php';
+
     // Use a session to keep track of temporary credentials, etc
     session_start();
 
     // Status variables
     $lastError = null;
     $currentStatus = null;
+
     // Request dispatching. If a function fails, $lastError will be updated.
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
@@ -45,45 +47,58 @@
 
 <html>
     <head>
-        <!-- Javascript Files -->
-        <script type="text/javascript" src="../static/js/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-
-        <!-- CSS Files -->
-        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.min.css">
+        <title>Evernote PHP OAuth Demo</title>
     </head>
     <body>
-        <script type="text/javascript">
-        </script>
-        <?php if (isset($lastError)) { ?>
-                <p style="color:red">An error occurred: <?php echo htmlspecialchars($lastError);  ?></p>
-        <?php } elseif ($action != 'callback') { ?>
 
-                <p>
-                    <a href="login.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
-                </p>
+        <h1>Evernote PHP OAuth Demo</h1>
 
-        <?php } else { ?>
-                <p style="color:green">
-                    Congratulations, you have successfully authorized this application to access your Evernote account!
-                </p>
+        <p>
+            This application demonstrates the use of OAuth to authenticate to the Evernote web service.
+            OAuth support is implemented using the <a href="http://www.php.net/manual/en/book.oauth.php">PHP OAuth Extension</a>.
+        </p>
 
-                <p>
-                    You account contains the following notebooks:
-                </p>
+        <p>
+            On this page, we demonstrate how OAuth authentication might work in the real world.
+            To see a step-by-step demonstration of how OAuth works, <a href="index.php?action=reset">click here</a>.
+        </p>
 
-            <?php if (isset($_SESSION['notebooks'])) { ?>
-                <ul>
-                <?php foreach ($_SESSION['notebooks'] as $notebook) { ?>
-                    <li><?php echo htmlspecialchars($notebook); ?></li>
-                <?php } ?>
-                </ul>
+        <hr/>
 
-            <?php } // if (isset($_SESSION['notebooks'])) ?>
+        <h2>Evernote Authentication</h2>
+
+<?php if (isset($lastError)) { ?>
+        <p style="color:red">An error occurred: <?php echo htmlspecialchars($lastError);  ?></p>
+<?php } elseif ($action != 'callback') { ?>
+
+        <p>
+            <a href="login.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
+        </p>
+
+<?php } else { ?>
+        <p style="color:green">
+            Congratulations, you have successfully authorized this application to access your Evernote account!
+        </p>
+
+        <p>
+            You account contains the following notebooks:
+        </p>
+
+    <?php if (isset($_SESSION['notebooks'])) { ?>
+        <ul>
+        <?php foreach ($_SESSION['notebooks'] as $notebook) { ?>
+            <li><?php echo htmlspecialchars($notebook); ?></li>
         <?php } ?>
-        
+        </ul>
+
+    <?php } // if (isset($_SESSION['notebooks'])) ?>
+<?php } // if (isset($lastError)) ?>
+
+        <hr/>
+
+        <p>
+            <a href="login.php?action=reset">Click here</a> to start over.
+        </p>
+
     </body>
 </html>
-
-
