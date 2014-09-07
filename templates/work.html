@@ -46,6 +46,7 @@
     <body>
         <div id="popupbox" title="Save Files"></div>
         <script type="text/javascript">
+            var note_id;
             $(document).ready(function(){
 
                 $('#output_div').hide();
@@ -70,7 +71,6 @@
 
                 $("#run_code").click(function(e){
                     e.preventDefault();
-                    e.preventDefault();
                     var text_data = editor.getValue();
                     $.ajax({
                         type:"POST",
@@ -91,20 +91,43 @@
                     e.preventDefault();
                     var text_data = editor.getValue();
                     var file_name = $('#file_name').val();
-                    $.ajax({
-                        type:"POST",
-                        url:"../comms.php",
-                        data: {"file_name":file_name, "content": text_data},
-                        dataType:"json",
-                        success:function(data){
-                            $('#output_div').show();
-                            console.log('Content posted.');
-                            console.log(data);
-                        },
-                        error:function(err){
-                            console.log(err);
-                        }
-                    });
+                    if(note_id){
+                        var action="save";
+                        $.ajax({
+                            type:"POST",
+                            url:"../comms.php",
+                            data: {"action":action,"guid":note_id, "noteTitle":file_name, "content": text_data},
+                            dataType:"json",
+                            success:function(data){
+                                console.log('Content posted.');
+                                console.log(data);
+                                $('#output_results').append(file_name + "successfully saved! \n")
+                                $('#output_div').show();
+                            },
+                            error:function(err){
+                                console.log(err);
+                            }
+                        });
+                    }else{
+                        var action="create_note";
+                        $.ajax({
+                            type:"POST",
+                            url:"../comms.php",
+                            data: {"action":action,"noteTitle":file_name, "content": text_data},
+                            dataType:"json",
+                            success:function(data){
+                                console.log('Content posted.');
+                                console.log(data);
+                                note_id = data.note_guid;
+                                var note_name = data.note_name;
+                                $('#output_results').append(note_name + "successfully created! \n")
+                                $('#output_div').show();
+                            },
+                            error:function(err){
+                                console.log(err);
+                            }
+                        });
+                    }
                 });
             });
 
@@ -135,7 +158,6 @@
             <div id="output_div">
                 <h1>Output</h1>
                 <p id="output_results">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
             <button class = "btn btn-default" id="save_content"><a href="../templates/save.html" class = "popup" data-title = "Save Text" >Save</a></button>
