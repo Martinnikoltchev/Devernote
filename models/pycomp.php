@@ -4,10 +4,10 @@
 	$tempLoc = "temp/";
 	$scriptPath = $tempLoc.$id.".py";
 	file_put_contents($scriptPath, $input);
-	exec("./py_wrapper ".$scriptPath, $output);
+	exec("python ".$scriptPath, $output);
 	$res = "";
 	foreach($output as $line){
 		$res.=$line."\n";
 	}
-	echo($res);
+	echo(json_encode(array('content' => $res)));
 ?>
