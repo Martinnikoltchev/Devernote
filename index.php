@@ -98,7 +98,9 @@
         <div id="content_container">
             <h1>DEVERNOTE</h1>
             <h3>coding anywhere</h3>
-            <button class="btn btn-default">Continue</button>
+            <p>
+                <button class="btn btn-default">Continue</button>
+            </p>
         </div>
     </body>
 </html>
