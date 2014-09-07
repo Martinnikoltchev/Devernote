@@ -95,6 +95,7 @@
                         text_data_lines[i] = "\t" + text_data_lines[i];
                     }
                     var text_data = "try:\n" + text_data_lines.join() + "\nexcept:\nimport traceback\ntraceback.print_exc()";
+                    console.log(text_data); //debug
                     var file_name = $('#file_name').val();
                     $.ajax({
                         type:"POST",
