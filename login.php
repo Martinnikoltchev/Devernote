@@ -17,14 +17,12 @@
 
     // Include our OAuth functions
     require_once 'functions.php';
-
     // Use a session to keep track of temporary credentials, etc
     session_start();
 
     // Status variables
     $lastError = null;
     $currentStatus = null;
-
     // Request dispatching. If a function fails, $lastError will be updated.
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
