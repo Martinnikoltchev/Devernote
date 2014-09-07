@@ -17,12 +17,14 @@
 
     // Include our OAuth functions
     require_once 'functions.php';
+
     // Use a session to keep track of temporary credentials, etc
     session_start();
 
     // Status variables
     $lastError = null;
     $currentStatus = null;
+
     // Request dispatching. If a function fails, $lastError will be updated.
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
@@ -45,45 +47,44 @@
 
 <html>
     <head>
-        <!-- Javascript Files -->
-        <script type="text/javascript" src="../static/js/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-
-        <!-- CSS Files -->
-        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.min.css">
+        <title>Evernote PHP OAuth Demo</title>
     </head>
     <body>
-        <script type="text/javascript">
-        </script>
-        <?php if (isset($lastError)) { ?>
-                <p style="color:red">An error occurred: <?php echo htmlspecialchars($lastError);  ?></p>
-        <?php } elseif ($action != 'callback') { ?>
 
-                <p>
-                    <a href="sampleApp.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
-                </p>
+        <h2>Evernote Authentication</h2>
 
-        <?php } else { ?>
-                <p style="color:green">
-                    Congratulations, you have successfully authorized this application to access your Evernote account!
-                </p>
+<?php if (isset($lastError)) { ?>
+        <p style="color:red">An error occurred: <?php echo htmlspecialchars($lastError);  ?></p>
+<?php } elseif ($action != 'callback') { ?>
 
-                <p>
-                    You account contains the following notebooks:
-                </p>
+        <p>
+            <a href="login.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
+        </p>
 
-            <?php if (isset($_SESSION['notebooks'])) { ?>
-                <ul>
-                <?php foreach ($_SESSION['notebooks'] as $notebook) { ?>
-                    <li><?php echo htmlspecialchars($notebook); ?></li>
-                <?php } ?>
-                </ul>
+<?php } else { ?>
+        <p style="color:green">
+            Congratulations, you have successfully authorized this application to access your Evernote account!
+        </p>
 
-            <?php } // if (isset($_SESSION['notebooks'])) ?>
-        <?php }
-        
+        <p>
+            You account contains the following notebooks:
+        </p>
+
+    <?php if (isset($_SESSION['notebooks'])) { ?>
+        <ul>
+        <?php foreach ($_SESSION['notebooks'] as $notebook) { ?>
+            <li><?php echo htmlspecialchars($notebook); ?></li>
+        <?php } ?>
+        </ul>
+
+    <?php } // if (isset($_SESSION['notebooks'])) ?>
+<?php } // if (isset($lastError)) ?>
+
+        <hr/>
+
+        <p>
+            <a href="login.php?action=reset">Click here</a> to start over.
+        </p>
+
     </body>
 </html>
-
-
