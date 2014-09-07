@@ -61,7 +61,7 @@
         <?php } elseif ($action != 'callback') { ?>
 
                 <p>
-                    <a href="sampleApp.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
+                    <a href="login.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
                 </p>
 
         <?php } else { ?>
@@ -81,7 +81,7 @@
                 </ul>
 
             <?php } // if (isset($_SESSION['notebooks'])) ?>
-        <?php }
+        <?php } ?>
         
     </body>
 </html>
