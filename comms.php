@@ -72,7 +72,7 @@
     	}
     }
 
-    die("hi Im here");      
+    die('Hi I got here');
     function makeNotebook($noteStore, $notebookTitle){
         $toMake = new Notebook();
         $toMake->name = $(notebookTitle);
