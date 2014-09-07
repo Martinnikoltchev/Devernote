@@ -40,6 +40,8 @@
             border-top: 1px solid;
             border-color: #C0C0C0;
             margin-top:5px;
+            max-height:300px;
+            overflow: scroll;
         }
         </style>
     </head>
@@ -76,7 +78,7 @@
                     for(var i = 0; i < text_data_lines.length; i++){
                         text_data_lines[i] = "\t" + text_data_lines[i];
                     }
-                    var text_data = "try:\n" + text_data_lines.join("\n") + "\nexcept:\n\timport traceback\n\ttraceback.print_exc()";
+                    var text_data = "try:\n" + text_data_lines.join("\n") + "\nexcept:\n\timport traceback\n\tprint(traceback.format_exc())";
                     console.log(text_data); //debug
                     $.ajax({
                         type:"POST",
