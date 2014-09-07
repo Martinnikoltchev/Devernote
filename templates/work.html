@@ -86,15 +86,13 @@
                             console.log('Content posted.');
                             console.log(data['content']);
                             var content_raw = data['content'];
-                            var content_final = "";
+                            var content_final = data['content'];
                             if(content_raw.search("Traceback") >= 0){
                                 var fileStart = content_raw.search("File ")-1;
                                 var fileEnd = content_raw.search(", line ")+1;
                                 var secondString = content_raw.substring(fileEnd+1, content_raw.length);
                                 var number = parseInt(secondString.substring(secondString.indexOf(" ")+1, secondString.indexOf(",")))-1;
                                 content_final = content_raw.substring(0, fileStart) + " " + secondString;
-                            } else {
-                                content_final = data['content'];
                             }
                             console.log(content_final);
                             $('#output_results').append('<p>' + content_final+'</p>');
