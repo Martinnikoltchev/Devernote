@@ -10,10 +10,9 @@
     // Status variables
     $lastError = null;
     $currentStatus = null;
-
+    echo "I got here";
     // Request dispatching. If a function fails, $lastError will be updated.
     if (isset($_GET['action'])) {
-        die($_GET['action']);
         $action = $_GET['action'];
         if ($action == 'callback') {
             if (handleCallback()) {
