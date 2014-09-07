@@ -47,26 +47,30 @@
 
 <html>
     <head>
-        <title>Evernote PHP OAuth Demo</title>
+        <!-- Javascript Files -->
+        <script type="text/javascript" src="../static/js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+
+        <!-- CSS Files -->
+        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.min.css">
     </head>
     <body>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                window.location = "../index.php";
+            })
+        </script>
 
-        <h1>Evernote PHP OAuth Demo</h1>
-
-        <p>
-            This application demonstrates the use of OAuth to authenticate to the Evernote web service.
-            OAuth support is implemented using the <a href="http://www.php.net/manual/en/book.oauth.php">PHP OAuth Extension</a>.
-        </p>
-
-        <p>
-            On this page, we demonstrate how OAuth authentication might work in the real world.
-            To see a step-by-step demonstration of how OAuth works, <a href="index.php?action=reset">click here</a>.
-        </p>
-
-        <hr/>
-
-        <h2>Evernote Authentication</h2>
-
+        <nav class = "navbar navbar-default" role="navigation">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="../index.php">Devernote</a></li>
+                    <li><a href="browser.html">Projects</a></li>
+                    <li><a href="work.html">Text Editor</a></li>
+                </ul>
+            </div>
+        </nav>
 <?php if (isset($lastError)) { ?>
         <p style="color:red">An error occurred: <?php echo htmlspecialchars($lastError);  ?></p>
 <?php } elseif ($action != 'callback') { ?>
@@ -76,13 +80,8 @@
         </p>
 
 <?php } else { ?>
-        <p style="color:green">
-            Congratulations, you have successfully authorized this application to access your Evernote account!
-        </p>
+        
 
-        <p>
-            You account contains the following notebooks:
-        </p>
 
     <?php if (isset($_SESSION['notebooks'])) { ?>
         <ul>
@@ -94,11 +93,6 @@
     <?php } // if (isset($_SESSION['notebooks'])) ?>
 <?php } // if (isset($lastError)) ?>
 
-        <hr/>
-
-        <p>
-            <a href="login.php?action=reset">Click here</a> to start over.
-        </p>
 
     </body>
 </html>
