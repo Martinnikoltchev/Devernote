@@ -18,7 +18,7 @@
 
         <style>
         #editorDiv{
-            margin: 10px 10px 10px 10px;
+            margin: 10px 0px 10px 10px;
             border-top:1px solid #AAA;
             border-bottom:1px solid #AAA;
         }
@@ -32,15 +32,12 @@
             margin-left:10px;
         }
         #output_results{
-            margin: 0px 0px 50px 10px;
-            padding-top:10px;
+            margin: 0px 0px 10px 10px;
             padding-bottom:10px;
             width:98.5%;
-            border-bottom: 1px solid;
-            border-top: 1px solid;
-            border-color: #C0C0C0;
+            border-bottom:1px solid #AAA;
             margin-top:5px;
-            max-height:300px;
+            height:200px;
             overflow: scroll;
         }
         </style>
@@ -140,14 +137,13 @@
                 });
                 </script>
             </div>
-            <button class = "btn btn-default" id="save_content"><a href="../templates/save.html" class = "popup" data-title = "Save Text" id="save_text">Save</a></button>
-            <button class = "btn btn-default" id="run_code">Run</button>
-            <button class = "btn btn-default"><a href="../templates/upload_form.html" class="popup">Upload File</a></button>
             <div id="output_div">
-                <h1>Output</h1>
                 <p id="output_results">
                 </p>
             </div>
+            <button class = "btn btn-default" id="save_content"><a href="../templates/save.html" class = "popup" data-title = "Save Text" id="save_text">Save</a></button>
+            <button class = "btn btn-default" id="run_code">Run</button>
+            <button class = "btn btn-default"><a href="../templates/upload_form.html" class="popup">Upload File</a></button>
         </div>
     </body>
 </html>
