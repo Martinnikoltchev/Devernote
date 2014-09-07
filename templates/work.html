@@ -88,7 +88,17 @@
                         success:function(data){
                             console.log('Content posted.');
                             console.log(data['content']);
-                            $('#output_results').append(data['content']+'\n');
+                            var content_raw = data['content'];
+                            var content_final = "";
+                            if(content_raw.search("Traceback") < 0){
+                                var fileStart = content_raw.search("File ")-1;
+                                var fileEnd = content_raw.search(", line ")+1;
+                                content_final = content_raw.substring(0, fileStart) + content_raw.substring(fileEnd, content_raw.length);
+                                console.log(content_final);
+                            } else {
+                                content_final = data['content'];
+                            }
+                            $('#output_results').append(content_final+'\n');
                             $('#output_div').show();
                         },
                         error:function(err){
