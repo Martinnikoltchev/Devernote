@@ -1,4 +1,37 @@
-<!DOCTYPE HTML>
+<?php
+    // Include our configuration settings
+    require_once 'config.php';
+
+    // Include our OAuth functions
+    require_once 'functions.php';
+    session_start();
+    
+
+    // Status variables
+    $lastError = null;
+    $currentStatus = null;
+
+    // Request dispatching. If a function fails, $lastError will be updated.
+    if (isset($_GET['action'])) {
+        die($_GET['action']);
+        $action = $_GET['action'];
+        if ($action == 'callback') {
+            if (handleCallback()) {
+                if (getTokenCredentials()) {
+                    listNotebooks();
+                }
+            }
+        } elseif ($action == 'authorize') {
+            if (getTemporaryCredentials()) {
+                // We obtained temporary credentials, now redirect the user to evernote.com to authorize access
+                header('Location: ' . getAuthorizationUrl());
+            }
+        } elseif ($action == 'reset') {
+            resetSession();
+        }
+    }
+
+?>
 <html>
     <head>
         <!-- Javascript Files -->
@@ -29,40 +62,6 @@
                 font-size:50px;
             }
         </style>
-        <?php
-            // Include our configuration settings
-            require_once 'config.php';
-
-            // Include our OAuth functions
-            require_once 'functions.php';
-            if (session_id() == ""){
-                session_start();
-            }
-
-            // Status variables
-            $lastError = null;
-            $currentStatus = null;
-
-            // Request dispatching. If a function fails, $lastError will be updated.
-            if (isset($_GET['action'])) {
-                $action = $_GET['action'];
-                if ($action == 'callback') {
-                    if (handleCallback()) {
-                        if (getTokenCredentials()) {
-                            listNotebooks();
-                        }
-                    }
-                } elseif ($action == 'authorize') {
-                    if (getTemporaryCredentials()) {
-                        // We obtained temporary credentials, now redirect the user to evernote.com to authorize access
-                        header('Location: ' . getAuthorizationUrl());
-                    }
-                } elseif ($action == 'reset') {
-                    resetSession();
-                }
-            }
-
-        ?>
     </head>
     <body>
         <script type="text/javascript">
