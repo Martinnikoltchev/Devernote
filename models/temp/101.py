@@ -1,5 +1,5 @@
 try:
-	print(1+7)
+	print(9)
 except:
 	import traceback
-	traceback.print_exc()
+	print(traceback.format_exc())
