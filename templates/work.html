@@ -90,11 +90,13 @@
                             if(content_raw.search("Traceback") < 0){
                                 var fileStart = content_raw.search("File ")-1;
                                 var fileEnd = content_raw.search(", line ")+1;
-                                content_final = content_raw.substring(0, fileStart) + content_raw.substring(fileEnd, content_raw.length);
-                                console.log(content_final);
+                                var secondString = content_raw.substring(fileEnd+1, content_raw.length);
+                                var number = parseInt(secondString.substring(secondString.indexOf(" ")+1, secondString.indexOf(",")))-1;
+                                content_final = content_raw.substring(0, fileStart) + " " + secondString;
                             } else {
                                 content_final = data['content'];
                             }
+                            console.log(content_final);
                             $('#output_results').append(content_final+'\n');
                             $('#output_div').show();
                         },
