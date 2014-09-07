@@ -40,7 +40,7 @@
                     <li><a href="templates/work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.php?action=authorize">Login</a></li>
+                    <li><a href="login.php?action=authorize">Login</a></li>
                 </ul>
             </div>
         </nav>
