@@ -51,6 +51,19 @@
     </head>
     <body>
 
+        <h1>Evernote PHP OAuth Demo</h1>
+
+        <p>
+            This application demonstrates the use of OAuth to authenticate to the Evernote web service.
+            OAuth support is implemented using the <a href="http://www.php.net/manual/en/book.oauth.php">PHP OAuth Extension</a>.
+        </p>
+
+        <p>
+            On this page, we demonstrate how OAuth authentication might work in the real world.
+            To see a step-by-step demonstration of how OAuth works, <a href="index.php?action=reset">click here</a>.
+        </p>
+
+        <hr/>
 
         <h2>Evernote Authentication</h2>
 
@@ -59,7 +72,7 @@
 <?php } elseif ($action != 'callback') { ?>
 
         <p>
-            <a href="login.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
+            <a href="sampleApp.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
         </p>
 
 <?php } else { ?>
@@ -84,7 +97,7 @@
         <hr/>
 
         <p>
-            <a href="login.php?action=reset">Click here</a> to start over.
+            <a href="sampleApp.php?action=reset">Click here</a> to start over.
         </p>
 
     </body>
