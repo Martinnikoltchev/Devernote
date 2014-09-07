@@ -23,7 +23,6 @@
     // Status variables
     $lastError = null;
     $currentStatus = null;
-    die("Hi I got here");
     // Request dispatching. If a function fails, $lastError will be updated.
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
