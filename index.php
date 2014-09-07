@@ -8,6 +8,10 @@
         <!-- CSS Files -->
         <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="static/css/bootstrap-theme.min.css">
+	<?php
+	    session_start();
+	    die(session_id());
+	?>
     </head>
     <body>
         <script type="text/javascript">
