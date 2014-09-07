@@ -79,6 +79,9 @@
             h3{
                 font-size:40px;
             }
+            #continue_button{
+                margin-left: 37%;
+            }
         </style>
     </head>
     <body>
@@ -99,7 +102,7 @@
             <h1>DEVERNOTE</h1>
             <h3>coding anywhere</h3>
             <p>
-                <button class="btn btn-default">Continue</button>
+                <button class="btn btn-default" id = "continue_button">Continue</button>
             </p>
         </div>
     </body>
