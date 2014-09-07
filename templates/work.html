@@ -92,7 +92,8 @@
                                 var fileEnd = content_raw.search(", line ")+1;
                                 var secondString = content_raw.substring(fileEnd+1, content_raw.length);
                                 var number = parseInt(secondString.substring(secondString.indexOf(" ")+1, secondString.indexOf(",")))-1;
-                                content_final = content_raw.substring(0, fileStart) + " " + number +secondString.substring(1, secondString.length);
+                                secondString = secondString.substring(0, secondString.indexOf(" ")+1) + number + secondString.substring(secondString.indexOf(","), secondString.length);
+                                content_final = content_raw.substring(0, fileStart) + " " + secondString;
                             }
                             console.log(content_final);
                             $('#output_results').append('<p>' + content_final+'</p>');
