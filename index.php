@@ -1,37 +1,3 @@
-<?php
-    // Include our configuration settings
-    require_once 'config.php';
-
-    // Include our OAuth functions
-    require_once 'functions.php';
-    session_start();
-    
-
-    // Status variables
-    $lastError = null;
-    $currentStatus = null;
-
-    // Request dispatching. If a function fails, $lastError will be updated.
-    if (isset($_GET['action'])) {
-        die($_GET['action']);
-        $action = $_GET['action'];
-        if ($action == 'callback') {
-            if (handleCallback()) {
-                if (getTokenCredentials()) {
-                    listNotebooks();
-                }
-            }
-        } elseif ($action == 'authorize') {
-            if (getTemporaryCredentials()) {
-                // We obtained temporary credentials, now redirect the user to evernote.com to authorize access
-                header('Location: ' . getAuthorizationUrl());
-            }
-        } elseif ($action == 'reset') {
-            resetSession();
-        }
-    }
-
-?>
 <html>
     <head>
         <!-- Javascript Files -->
@@ -74,7 +40,7 @@
                     <li><a href="templates/work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.php?action=authorize">Login</a></li>
+                    <li><a href="login.php">Login</a></li>
                 </ul>
             </div>
         </nav>
