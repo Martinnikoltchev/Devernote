@@ -56,11 +56,6 @@
         <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.min.css">
     </head>
     <body>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                window.location = "../index.php";
-            })
-        </script>
 
         <nav class = "navbar navbar-default" role="navigation">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -81,7 +76,9 @@
 
 <?php } else { ?>
         
-
+    <script type="text/javascript">
+        window.location = "../index.php";
+    </script>
 
     <?php if (isset($_SESSION['notebooks'])) { ?>
         <ul>
