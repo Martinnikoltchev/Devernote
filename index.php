@@ -8,6 +8,27 @@
         <!-- CSS Files -->
         <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="static/css/bootstrap-theme.min.css">
+        <style type="text/css">
+            body { 
+                background: url(static/img/congruent_outline.png) no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            h1,h3{
+                color:white;
+                text-align: center;
+                font-weight: lighter;
+            }
+            h1{
+                margin-top: 250px;
+                font-size:100px;
+            }
+            h3{
+                font-size:50px;
+            }
+        </style>
     </head>
     <body>
         <script type="text/javascript">
@@ -26,9 +47,7 @@
         </nav>
         <div id="content_container">
             <h1>Devernote</h1>
-            <div>
-                
-            </div>
+            <h3>Never 5get</h3>
         </div>
     </body>
 </html>
