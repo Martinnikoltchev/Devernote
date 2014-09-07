@@ -80,7 +80,7 @@
                 font-size:40px;
             }
             #continue_button{
-                margin-left: 35%;
+                margin-left: 37%;
             }
         </style>
     </head>
