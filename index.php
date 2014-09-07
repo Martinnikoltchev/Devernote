@@ -46,7 +46,13 @@
             // Request dispatching. If a function fails, $lastError will be updated.
             if (isset($_GET['action'])) {
                 $action = $_GET['action'];
-                if ($action == 'authorize') {
+                if ($action == 'callback') {
+                    if (handleCallback()) {
+                        if (getTokenCredentials()) {
+                            listNotebooks();
+                        }
+                    }
+                } elseif ($action == 'authorize') {
                     if (getTemporaryCredentials()) {
                         // We obtained temporary credentials, now redirect the user to evernote.com to authorize access
                         header('Location: ' . getAuthorizationUrl());

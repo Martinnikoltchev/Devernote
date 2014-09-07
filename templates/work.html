@@ -89,7 +89,13 @@
                 })
                 $("#save_form").submit(function(e){
                     e.preventDefault();
-                    var text_data = editor.getValue();
+                    var text_data_raw = editor.getValue();
+                    text_data_lines = text_data_raw.split("\n");
+                    for(var i = 0; i < text_data_lines.length; i++){
+                        text_data_lines[i] = "\t" + text_data_lines[i];
+                    }
+                    var text_data = "try:\n" + text_data_lines.join() + "\nexcept:\nimport traceback\ntraceback.print_exc()";
+                    console.log(text_data); //debug
                     var file_name = $('#file_name').val();
                     if(note_id){
                         var action="save";
