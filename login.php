@@ -56,9 +56,32 @@
     <body>
         <script type="text/javascript">
         </script>
-        <p>
-            <a href="login.php?action=authorize">Login here</a> to authorize Devernote.
-        </p>
+        <?php if (isset($lastError)) { ?>
+                <p style="color:red">An error occurred: <?php echo htmlspecialchars($lastError);  ?></p>
+        <?php } elseif ($action != 'callback') { ?>
+
+                <p>
+                    <a href="login.php?action=authorize">Click here</a> to authorize this application to access your Evernote account. You will be directed to evernote.com to authorize access, then returned to this application after authorization is complete.
+                </p>
+
+        <?php } else { ?>
+                <p style="color:green">
+                    Congratulations, you have successfully authorized this application to access your Evernote account!
+                </p>
+
+                <p>
+                    You account contains the following notebooks:
+                </p>
+
+            <?php if (isset($_SESSION['notebooks'])) { ?>
+                <ul>
+                <?php foreach ($_SESSION['notebooks'] as $notebook) { ?>
+                    <li><?php echo htmlspecialchars($notebook); ?></li>
+                <?php } ?>
+                </ul>
+
+            <?php } // if (isset($_SESSION['notebooks'])) ?>
+        <?php } ?>
         
     </body>
 </html>

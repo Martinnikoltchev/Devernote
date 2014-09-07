@@ -75,7 +75,7 @@
                     for(var i = 0; i < text_data_lines.length; i++){
                         text_data_lines[i] = "\t" + text_data_lines[i];
                     }
-                    var text_data = "try:\n" + text_data_lines.join("\n") + "\nexcept:\n\timport traceback\n\ttraceback.print_exc()";
+                    var text_data = "try:\n" + text_data_lines.join("\n") + "\nexcept:\n\timport traceback\n\tprint(traceback.format_exc())";
                     console.log(text_data); //debug
                     $.ajax({
                         type:"POST",
@@ -84,13 +84,13 @@
                         dataType:"json",
                         success:function(data){
                             console.log('Content posted.');
-                            console.log(data.responseText);
-                            $('#output_results').append(data.responseText);
+                            console.log(data['content']);
+                            $('#output_results').append(data['content']+'\n');
                             $('#output_div').show();
                         },
                         error:function(err){
                             console.log(err);
-                            $('#output_results').append(err.responseText);
+                            $('#output_results').append(err.responseText+'\n');
                             $('#output_div').show();
                         }
                     });
@@ -122,7 +122,8 @@
                 <textarea id="textEditor"># your code goes here</textarea>
                 <script type="text/javascript">
                 var editor = CodeMirror.fromTextArea(document.getElementById("textEditor"),{
-                    mode: "python"
+                    mode: "python",
+                    lineNumbers: true
                 });
                 </script>
             </div>
