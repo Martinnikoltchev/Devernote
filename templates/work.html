@@ -97,7 +97,7 @@
                                 content_final = data['content'];
                             }
                             console.log(content_final);
-                            $('#output_results').append(content_final+'\n');
+                            $('#output_results').append('<p>' + content_final+'</p>');
                             $('#output_div').show();
                         },
                         error:function(err){
@@ -107,6 +107,10 @@
                         }
                     });
                 });
+                $('#console_clear').click(function(e){
+                    e.preventDefault();
+                    $('#output_results').html("");
+                })
                 $('#save_text').click(function(e){
                     if(note_id){
                         return;
@@ -119,7 +123,6 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a class="navbar-brand" href="../index.php">Devernote</a></li>
-                    <li><a href="browser.html">Projects</a></li>
                     <li><a href="work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -145,7 +148,7 @@
             </div>
             <button class = "btn btn-default" id="save_content"><a href="../templates/save.html" class = "popup" data-title = "Save Text" id="save_text">Save</a></button>
             <button class = "btn btn-default" id="run_code">Run</button>
-            <button class = "btn btn-default"><a href="../templates/upload_form.html" class="popup">Upload File</a></button>
+            <button class = "btn btn-default" id="console_clear">Clear Console</button>
         </div>
     </body>
 </html>

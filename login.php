@@ -61,7 +61,6 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a class="navbar-brand" href="../index.php">Devernote</a></li>
-                    <li><a href="browser.html">Projects</a></li>
                     <li><a href="work.html">Text Editor</a></li>
                 </ul>
             </div>
@@ -79,6 +78,10 @@
     <script type="text/javascript">
         window.location = "../index.php";
     </script>
+
+    <p>
+        Click <a href="../index.php">here</a> to redirect to the home page (if it's not automatic).
+    </p>
 
     <?php if (isset($_SESSION['notebooks'])) { ?>
         <ul>
