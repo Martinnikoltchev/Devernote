@@ -9,11 +9,11 @@
         <link rel="stylesheet" type="text/css" href="static/css/bootstrap-theme.min.css">
         <style type="text/css">
             body { 
-               <!-- background: url(static/img/congruent_outline.png) no-repeat center center fixed; 
+                background: url(static/img/congruent_outline.png) no-repeat center center fixed; 
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
-                background-size: cover;-->
+                background-size: cover;
             }
             h1,h3{
                 color:white;
@@ -40,7 +40,7 @@
                     <li><a href="templates/work.html">Text Editor</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.php?action=authorize">Login</a></li>
+                    <li><a href="login.php">Login</a></li>
                 </ul>
             </div>
         </nav>
