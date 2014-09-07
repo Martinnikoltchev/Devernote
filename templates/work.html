@@ -93,7 +93,7 @@
                         },
                         error:function(err){
                             console.log(err);
-                            $('#output_results').append(err.responseText);
+                            $('#output_results').append(err.responseText+'\n');
                             $('#output_div').show();
                         }
                     });
