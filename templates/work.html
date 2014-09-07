@@ -95,52 +95,12 @@
                             $('#output_div').show();
                         }
                     });
-                })
-                $("#save_button").click(function(e){
-                    console.log("I got here 1");
-		    e.preventDefault();
-                    var text_data = editor.getValue();
-                    text_data_lines = text_data_raw.split("\n");
-                    var file_name = $('#file_name').val();
-                    console.log("I got here");
-		    if(note_id){
-                        var action="save";
-                        $.ajax({
-                            type:"POST",
-                            url:"../comms.php",
-                            data: {"action":action,"guid":note_id, "noteTitle":file_name, "content": text_data},
-                            dataType:"json",
-                            success:function(data){
-                                console.log('Content posted.');
-                                console.log(data);
-                                $('#output_results').append(file_name + "successfully saved! \n")
-                                $('#output_div').show();
-                            },
-                            error:function(err){
-                                console.log(err);
-                            }
-                        });
-                    }else{
-                        var action="create_note";
-                        $.ajax({
-                            type:"POST",
-                            url:"../comms.php",
-                            data: {"action":action,"noteTitle":file_name, "content": text_data},
-                            dataType:"json",
-                            success:function(data){
-                                console.log('Content posted.');
-                                console.log(data);
-                                note_id = data.note_guid;
-                                var note_name = data.note_name;
-                                $('#output_results').append(note_name + "successfully created! \n")
-                                $('#output_div').show();
-                            },
-                            error:function(err){
-                                console.log(err);
-                            }
-                        });
-                    }
                 });
+                $('#save_text').click(function(e){
+                    if(note_id){
+                        return;
+                    } 
+                })
             });
 
         </script>
@@ -167,7 +127,7 @@
                 });
                 </script>
             </div>
-            <button class = "btn btn-default" id="save_content"><a href="../templates/save.html" class = "popup" data-title = "Save Text" >Save</a></button>
+            <button class = "btn btn-default" id="save_content"><a href="../templates/save.html" class = "popup" data-title = "Save Text" id="save_text">Save</a></button>
             <button class = "btn btn-default" id="run_code">Run</button>
             <button class = "btn btn-default"><a href="../templates/upload_form.html" class="popup">Upload File</a></button>
             <div id="output_div">
