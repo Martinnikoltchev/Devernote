@@ -96,12 +96,14 @@
                         }
                     });
                 })
-                $("#save_form").submit(function(e){
-                    e.preventDefault();
+                $("#save_button").click(function(e){
+                    console.log("I got here 1");
+		    e.preventDefault();
                     var text_data = editor.getValue();
                     text_data_lines = text_data_raw.split("\n");
                     var file_name = $('#file_name').val();
-                    if(note_id){
+                    console.log("I got here");
+		    if(note_id){
                         var action="save";
                         $.ajax({
                             type:"POST",
