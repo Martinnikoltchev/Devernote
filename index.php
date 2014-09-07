@@ -59,7 +59,7 @@
                 font-size:100px;
             }
             h3{
-                font-size:50px;
+                font-size:40px;
             }
         </style>
     </head>
@@ -79,8 +79,8 @@
             </div>
         </nav>
         <div id="content_container">
-            <h1>Devernote</h1>
-            <h3>Never 5get</h3>
+            <h1>DEVERNOTE</h1>
+            <h3>coding anywhere</h3>
         </div>
     </body>
 </html>
