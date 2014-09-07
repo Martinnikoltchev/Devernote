@@ -84,12 +84,15 @@
                         data: {"content": text_data},
                         dataType:"json",
                         success:function(data){
-                            $('#output_div').show();
                             console.log('Content posted.');
-                            console.log(data);
+                            console.log(data.responseText);
+                            $('#output_results').append(data.responseText);
+                            $('#output_div').show();
                         },
                         error:function(err){
                             console.log(err);
+                            $('#output_results').append(err.responseText);
+                            $('#output_div').show();
                         }
                     });
                 })
