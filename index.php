@@ -20,6 +20,14 @@
                 color:white;
                 text-align: center;
                 font-weight: lighter;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none; /* Webkit */
+                -moz-user-select: none;    /* Firefox */
+                -ms-user-select: none;     /* IE 10  */
+
+                /* Currently not supported in Opera but will be soon */
+                -o-user-select: none;
+                user-select: none;
             }
             h1{
                 margin-top: 250px;
