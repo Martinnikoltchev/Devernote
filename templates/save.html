@@ -9,3 +9,50 @@
         <button class="btn btn-default closedialog">Close</button>
     </p>
 </form>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#save_form").submit(function(e){
+            e.preventDefault();
+            var text_data = editor.getValue();
+            text_data_lines = text_data_raw.split("\n");
+            var file_name = $('#file_name').val();
+            if(note_id){
+                var action="save";
+                $.ajax({
+                    type:"POST",
+                    url:"../comms.php",
+                    data: {"action":action,"guid":note_id, "noteTitle":file_name, "content": text_data},
+                    dataType:"json",
+                    success:function(data){
+                        console.log('Content posted.');
+                        console.log(data);
+                        $('#output_results').append(file_name + "successfully saved! \n")
+                        $('#output_div').show();
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                });
+            }else{
+                var action="create_note";
+                $.ajax({
+                    type:"POST",
+                    url:"../comms.php",
+                    data: {"action":action,"noteTitle":file_name, "content": text_data},
+                    dataType:"json",
+                    success:function(data){
+                        console.log('Content posted.');
+                        console.log(data);
+                        note_id = data.note_guid;
+                        var note_name = data.note_name;
+                        $('#output_results').append(note_name + "successfully created! \n")
+                        $('#output_div').show();
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                });
+            }
+        });
+    })
+</script>
