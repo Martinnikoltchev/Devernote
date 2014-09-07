@@ -5,11 +5,11 @@
 
     // Include our OAuth functions
     require_once 'functions.php';
-
+    die("Im at the first death");
     $client = new Evernote\Client(array('token' => $token));
     $userStore = $client->getUserStore();
     $userStore->getUser();
-
+    die('Im at the second death');
     $noteStore = $client->getNoteStore();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){

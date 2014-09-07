@@ -88,12 +88,12 @@
                         success:function(data){
                             console.log('Content posted.');
                             console.log(data['content']);
-                            $('#output_results').append(data['content']);
+                            $('#output_results').append(data['content']+'\n');
                             $('#output_div').show();
                         },
                         error:function(err){
                             console.log(err);
-                            $('#output_results').append(err.responseText);
+                            $('#output_results').append(err.responseText+'\n');
                             $('#output_div').show();
                         }
                     });

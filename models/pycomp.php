@@ -1,4 +1,5 @@
 <?php
+	#echo(json_encode(array('content' => 'hi there')));
 	$input = $_REQUEST["content"];
 	$id = "101";
 	$tempLoc = "temp/";
